@@ -1,0 +1,39 @@
+{% extends 'car_accounting/base.html'%}
+
+{% block content %}
+
+{% if cars|length_is:0 %}
+    <h1 style="text-align: center">List of cars is empty</h1>
+
+{% else %}
+
+    <h1 style="text-align: center">List of cars</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Reg_num</th>
+                <th>Mark</th>
+                <th>Model</th>
+                <th>Release year</th>
+                <th>Employer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+                <tr>
+                    <td>{{car.car_id}}</td>
+                    <td>{{car.reg_num}}</td>
+                    <td>{{car.mark}}</td>
+                    <td>{{car.model}}</td>
+                    <td>{{car.release_year}}</td>
+                    <td>{{car.owner_id}}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href={% url 'add_car' %}  role="button" style="text-align: right" >Add car</a>
+{% endblock %}

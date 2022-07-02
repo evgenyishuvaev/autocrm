@@ -18,6 +18,7 @@ from django.urls import path, include
 from .settings import DEBUG
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('car_accounting.urls'))
 ]
 
 if DEBUG:

@@ -1,0 +1,40 @@
+{% extends 'car_accounting/base.html' %}
+
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<form action="{% url 'statistics' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Найти</button>
+</form>
+
+<br style="width: 100%;">
+
+{% if result %}
+
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Reg_num</th>
+                <th>Mark</th>
+                <th>Model</th>
+                <th>Release year</th>
+                <th>Employer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for res in result %}
+                <tr>
+                    <td>{{res.car_id}}</td>
+                    <td>{{res.reg_num}}</td>
+                    <td>{{res.mark}}</td>
+                    <td>{{res.model}}</td>
+                    <td>{{res.release_year}}</td>
+                    <td>{{res.owner_id}}</td>
+                </tr>
+    {% endfor %}
+{% endif %}
+{% endblock %}

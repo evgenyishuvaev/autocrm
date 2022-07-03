@@ -7,7 +7,15 @@
 
 <form action="{% url 'add_car' %}" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    <p>{{ form.reg_num.label_tag }}</p>
+    <p>{{ form.reg_num }}</p>
+    <p>{{ form.mark.label_tag }}</p>
+    <p>{{ form.mark }}</p>
+    <p>{{ form.model.label_tag }}</p>
+    <p>{{ form.model }}</p>
+    <p>{{ form.release_year.label_tag }}</p>
+    <p>{{ form.release_year }}</p>
+    <input id="owner_id" name="owner_id" type="text" value="{{ username }}" hidden>
     <button type="submit">Добавить</button>
 </form>
-{% endblock%}
+{% endblock %}

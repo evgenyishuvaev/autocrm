@@ -10,8 +10,15 @@
     <title>{{title}}</title>
 </head>
 <body>
-<div class="container">
-    <div>User: {{ request.user.username}}</div>
+<div class="top_menu">
+    {% if request.user.is_authenticated %}
+        <span>User: {{ request.user.username}} | </span>
+        {% if request.user.is_superuser%}
+        <a href="/admin">Admin panel | </a>
+        <a href="#">Statistics | </a>
+        {% endif %}
+        <a href="{% url 'logout_handler'%}">Log out</a>
+    {% endif%}
 </div>
 <div class="container">
     {% block content %}

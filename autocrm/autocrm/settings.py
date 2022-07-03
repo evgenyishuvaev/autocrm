@@ -34,6 +34,9 @@ INTERNAL_IPS = [
 
 AUTH_USER_MODEL = 'accounts.CRMUser'
 
+LOGIN_URL = '/accounts/login_page'
+LOGIN_REDIRECT_URL = '/'
+
 # Application definition
 
 INSTALLED_APPS = [

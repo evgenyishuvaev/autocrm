@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 
-from .models import Cars
+from .models import Car, Model
 from .forms import AddCar, StatisticsForm
 
 
@@ -10,7 +10,11 @@ from .forms import AddCar, StatisticsForm
 def add_car(request: HttpRequest):
 
     if request.method == "POST":
-        form = AddCar(request.POST)
+        mark = Model.objects.all().filter(model=request.POST['model'])[0].mark_id
+        form_fields = request.POST.copy()
+        form_fields.setdefault('mark', mark)
+        form = AddCar(form_fields)
+        print(form.fields)
         if form.is_valid():
             form.save()
             return redirect('list_of_cars')
@@ -25,7 +29,7 @@ def add_car(request: HttpRequest):
 
 @login_required
 def get_cars(request):
-    cars = Cars.objects.all()
+    cars = Car.objects.all()
     return render(request,
                   template_name='car_accounting/list_of_car.html',
                   context={'cars': cars, 'title': 'List_of_cars'}

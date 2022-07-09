@@ -3,7 +3,7 @@ from datetime import datetime
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Marks, Models, Cars
+from .models import Mark, Model, Car
 
 
 class AddCar(forms.ModelForm):
@@ -18,7 +18,6 @@ class AddCar(forms.ModelForm):
 
     def clean_release_year(self):
         release_year = int(self.cleaned_data['release_year'])
-        print(release_year)
         if release_year > self.current_year:
             raise ValidationError("Release year can't be greater then current year")
         if release_year < 0:
@@ -27,19 +26,19 @@ class AddCar(forms.ModelForm):
         return release_year
 
     class Meta:
-        model = Cars
+        model = Car
         fields = '__all__'
 
 
 class StatisticsForm(forms.Form):
 
     reg_num = forms.CharField(max_length=9, label='Register number', required=False)
-    mark = forms.ModelChoiceField(queryset=Marks.objects.all(),
+    mark = forms.ModelChoiceField(queryset=Mark.objects.all(),
                                   to_field_name='mark',
                                   label='Mark',
                                   required=False
                                   )
-    model = forms.ModelChoiceField(queryset=Models.objects.all(),
+    model = forms.ModelChoiceField(queryset=Model.objects.all(),
                                    to_field_name='model',
                                    label='Model',
                                    required=False

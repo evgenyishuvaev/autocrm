@@ -1,10 +1,136 @@
 [
 {
+  "model": "car_accounting.mark",
+  "pk": 1,
+  "fields": {
+    "mark": "Audi"
+  }
+},
+{
+  "model": "car_accounting.mark",
+  "pk": 2,
+  "fields": {
+    "mark": "Ford"
+  }
+},
+{
+  "model": "car_accounting.mark",
+  "pk": 3,
+  "fields": {
+    "mark": "Honda"
+  }
+},
+{
+  "model": "car_accounting.model",
+  "pk": 1,
+  "fields": {
+    "mark": "Audi",
+    "model": "TT"
+  }
+},
+{
+  "model": "car_accounting.model",
+  "pk": 2,
+  "fields": {
+    "mark": "Audi",
+    "model": "Q5"
+  }
+},
+{
+  "model": "car_accounting.model",
+  "pk": 3,
+  "fields": {
+    "mark": "Audi",
+    "model": "A8"
+  }
+},
+{
+  "model": "car_accounting.model",
+  "pk": 4,
+  "fields": {
+    "mark": "Ford",
+    "model": "Focus"
+  }
+},
+{
+  "model": "car_accounting.model",
+  "pk": 5,
+  "fields": {
+    "mark": "Ford",
+    "model": "Escape"
+  }
+},
+{
+  "model": "car_accounting.model",
+  "pk": 6,
+  "fields": {
+    "mark": "Ford",
+    "model": "Fiesta"
+  }
+},
+{
+  "model": "car_accounting.model",
+  "pk": 7,
+  "fields": {
+    "mark": "Honda",
+    "model": "Accord"
+  }
+},
+{
+  "model": "car_accounting.model",
+  "pk": 8,
+  "fields": {
+    "mark": "Honda",
+    "model": "Integra"
+  }
+},
+{
+  "model": "car_accounting.model",
+  "pk": 9,
+  "fields": {
+    "mark": "Honda",
+    "model": "S2000"
+  }
+},
+{
+  "model": "car_accounting.car",
+  "pk": 1,
+  "fields": {
+    "reg_num": "000000000",
+    "mark": "Audi",
+    "model": "TT",
+    "release_year": 2005,
+    "owner_id": "serv"
+  }
+},
+{
+  "model": "car_accounting.car",
+  "pk": 2,
+  "fields": {
+    "reg_num": "123456654",
+    "mark": "Honda",
+    "model": "Integra",
+    "release_year": 1998,
+    "owner_id": "serv"
+  }
+},
+{
+  "model": "car_accounting.car",
+  "pk": 3,
+  "fields": {
+    "reg_num": "фывфывфыв",
+    "mark": "Audi",
+    "model": "TT",
+    "release_year": 2021,
+    "owner_id": "serv"
+  }
+},
+{
   "model": "accounts.crmuser",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$320000$R4HYY1zOikxWpFRoGdND14$tOGMG3OKWwvo9Mt3jBbA2Sx1NHJ2h2rY/esuE+BNYDU=",
-    "last_login": "2022-07-05T18:59:30.708Z",
+    "last_login": "2022-07-08T19:28:46.620Z",
     "is_superuser": true,
     "username": "serv",
     "first_name": "",
@@ -35,189 +161,6 @@
     "is_manager": true,
     "groups": [],
     "user_permissions": []
-  }
-},
-{
-  "model": "car_accounting.marks",
-  "pk": 1,
-  "fields": {
-    "mark": "Audi"
-  }
-},
-{
-  "model": "car_accounting.marks",
-  "pk": 2,
-  "fields": {
-    "mark": "Ford"
-  }
-},
-{
-  "model": "car_accounting.marks",
-  "pk": 3,
-  "fields": {
-    "mark": "Honda"
-  }
-},
-{
-  "model": "car_accounting.models",
-  "pk": 1,
-  "fields": {
-    "model": "TT"
-  }
-},
-{
-  "model": "car_accounting.models",
-  "pk": 2,
-  "fields": {
-    "model": "Q5"
-  }
-},
-{
-  "model": "car_accounting.models",
-  "pk": 3,
-  "fields": {
-    "model": "A8"
-  }
-},
-{
-  "model": "car_accounting.models",
-  "pk": 4,
-  "fields": {
-    "model": "Escape"
-  }
-},
-{
-  "model": "car_accounting.models",
-  "pk": 5,
-  "fields": {
-    "model": "Fiesta"
-  }
-},
-{
-  "model": "car_accounting.models",
-  "pk": 6,
-  "fields": {
-    "model": "Focus"
-  }
-},
-{
-  "model": "car_accounting.models",
-  "pk": 7,
-  "fields": {
-    "model": "Accord"
-  }
-},
-{
-  "model": "car_accounting.models",
-  "pk": 8,
-  "fields": {
-    "model": "Integra"
-  }
-},
-{
-  "model": "car_accounting.models",
-  "pk": 9,
-  "fields": {
-    "model": "S2000"
-  }
-},
-{
-  "model": "car_accounting.cars",
-  "pk": 1,
-  "fields": {
-    "reg_num": "a126rt126",
-    "mark": "Audi",
-    "model": "TT",
-    "release_year": 2022,
-    "owner_id": "serv"
-  }
-},
-{
-  "model": "car_accounting.cars",
-  "pk": 2,
-  "fields": {
-    "reg_num": "a123ey126",
-    "mark": "Audi",
-    "model": "TT",
-    "release_year": 2021,
-    "owner_id": "serv"
-  }
-},
-{
-  "model": "car_accounting.cars",
-  "pk": 3,
-  "fields": {
-    "reg_num": "asd354qwe",
-    "mark": "Audi",
-    "model": "TT",
-    "release_year": 2021,
-    "owner_id": "serv"
-  }
-},
-{
-  "model": "car_accounting.cars",
-  "pk": 4,
-  "fields": {
-    "reg_num": "a777dv09",
-    "mark": "Audi",
-    "model": "TT",
-    "release_year": 2022,
-    "owner_id": "serv"
-  }
-},
-{
-  "model": "car_accounting.cars",
-  "pk": 5,
-  "fields": {
-    "reg_num": "a999aa126",
-    "mark": "Audi",
-    "model": "TT",
-    "release_year": 2000,
-    "owner_id": "serv"
-  }
-},
-{
-  "model": "car_accounting.cars",
-  "pk": 6,
-  "fields": {
-    "reg_num": "a777cv500",
-    "mark": "Audi",
-    "model": "TT",
-    "release_year": 2022,
-    "owner_id": "serv"
-  }
-},
-{
-  "model": "car_accounting.cars",
-  "pk": 7,
-  "fields": {
-    "reg_num": "а135те26",
-    "mark": "Ford",
-    "model": "Fiesta",
-    "release_year": 2005,
-    "owner_id": "serv"
-  }
-},
-{
-  "model": "car_accounting.cars",
-  "pk": 8,
-  "fields": {
-    "reg_num": "888888888",
-    "mark": "Audi",
-    "model": "TT",
-    "release_year": 1955,
-    "owner_id": "serv"
-  }
-},
-{
-  "model": "car_accounting.cars",
-  "pk": 9,
-  "fields": {
-    "reg_num": "999999999",
-    "mark": "Ford",
-    "model": "Fiesta",
-    "release_year": 1998,
-    "owner_id": "john"
   }
 }
 ]

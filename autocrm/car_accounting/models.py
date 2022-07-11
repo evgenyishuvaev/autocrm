@@ -27,7 +27,7 @@ class Car(models.Model):
     mark = models.ForeignKey(Mark, to_field='mark', on_delete=models.PROTECT)
     model = models.ForeignKey(Model, to_field='model', on_delete=models.PROTECT)
     release_year = models.IntegerField()
-    owner_id = models.ForeignKey('accounts.CRMUser', to_field='username', on_delete=models.PROTECT)
+    owner = models.ForeignKey('accounts.CRMUser', to_field='username', on_delete=models.PROTECT)
 
     def __str__(self):
         return self.reg_num

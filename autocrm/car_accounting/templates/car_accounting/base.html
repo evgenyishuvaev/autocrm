@@ -15,9 +15,9 @@
         <span>User: {{ request.user.username}} | </span>
         {% if request.user.is_superuser%}
         <a href="/admin">Admin panel | </a>
-        <a href="#">Statistics | </a>
+        <a href="{% url 'statistics' %}">Statistics | </a>
         {% endif %}
-        <a href="{% url 'logout_handler'%}">Log out</a>
+        <a href="{% url 'logout_handler' %}">Log out</a>
     {% endif%}
 </div>
 <div class="container">

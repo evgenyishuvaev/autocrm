@@ -100,7 +100,7 @@
     "mark": "Audi",
     "model": "TT",
     "release_year": 2005,
-    "owner_id": "serv"
+    "owner": "serv"
   }
 },
 {
@@ -111,7 +111,7 @@
     "mark": "Honda",
     "model": "Integra",
     "release_year": 1998,
-    "owner_id": "serv"
+    "owner": "serv"
   }
 },
 {
@@ -122,7 +122,7 @@
     "mark": "Audi",
     "model": "TT",
     "release_year": 2021,
-    "owner_id": "serv"
+    "owner": "serv"
   }
 },
 {

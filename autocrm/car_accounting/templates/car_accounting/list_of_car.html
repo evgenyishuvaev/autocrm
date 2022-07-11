@@ -23,10 +23,10 @@
         <tbody>
             {% for car in cars %}
                 <tr>
-                    <td>{{car.car_id}}</td>
+                    <td>{{car.id}}</td>
                     <td>{{car.reg_num}}</td>
-                    <td>{{car.mark}}</td>
-                    <td>{{car.model}}</td>
+                    <td>{{car.mark_id}}</td>
+                    <td>{{car.model_id}}</td>
                     <td>{{car.release_year}}</td>
                     <td>{{car.owner_id}}</td>
                 </tr>
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href={% url 'add_car' %}  role="button" style="text-align: right" >Add car</a>
+    <a class="btn btn-primary" href="{% url 'add_car' %}"  role="button" style="text-align: right" >Add car</a>
 {% endblock %}

@@ -28,7 +28,7 @@ def add_car(request: HttpRequest):
 
 
 @login_required
-def get_cars(request):
+def get_cars(request: HttpRequest):
     cars = Car.objects.all()
     return render(request,
                   template_name='car_accounting/list_of_car.html',
@@ -36,24 +36,28 @@ def get_cars(request):
                   )
 
 
-# @login_required
-# def get_statistics(request):
-#     form = StatisticsForm()
-#
-#     if request.method == 'POST':
-#         form = StatisticsForm(request.POST)
-#         if form.is_valid():
-#             field_for_filter = request.POST.copy()
-#             print(field_for_filter)
-#             del field_for_filter['csrfmiddlewaretoken']
-#             result = Cars.objects.all().filter(**field_for_filter)
-#             return render(request,
-#                           template_name='car_accounting/statistics.html',
-#                           context={'title': 'Statistics', 'result': result, 'form': form}
-#                           )
-#
-#     else:
-#         return render(request,
-#                       template_name='car_accounting/statistics.html',
-#                       context={'title': 'Statistics', 'form': form}
-#                       )
+@login_required
+def get_statistics(request: HttpRequest):
+    form = StatisticsForm()
+
+    if request.method == 'POST':
+        form = StatisticsForm(request.POST)
+        if form.is_valid():
+            fields_for_filter = {key: value for key, value in form.cleaned_data.items() if value}
+
+            result = Car.objects.all().filter(**fields_for_filter).values()
+            count_row = len(result)
+            print(result)
+            return render(request,
+                          template_name='car_accounting/statistics.html',
+                          context={'title': 'Statistics',
+                                   'result': result,
+                                   'count': count_row,
+                                   'form': form}
+                          )
+
+    else:
+        return render(request,
+                      template_name='car_accounting/statistics.html',
+                      context={'title': 'Statistics', 'form': form}
+                      )

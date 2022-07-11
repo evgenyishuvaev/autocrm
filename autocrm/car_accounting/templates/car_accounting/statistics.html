@@ -12,9 +12,16 @@
 
 <br style="width: 100%;">
 
-{% if result %}
 
-        <table class="table table-striped">
+{% if count %}
+    {% if count|length_is:1 %}
+        <p>Found {{ count }} record</p>
+    {% else %}
+        <p>Found {{ count }} records</p>
+    {% endif %}
+{% endif %}
+
+<table class="table table-striped">
         <thead>
             <tr>
                 <th>#</th>
@@ -26,15 +33,19 @@
             </tr>
         </thead>
         <tbody>
-            {% for res in result %}
+            {% for car in result %}
                 <tr>
-                    <td>{{res.car_id}}</td>
-                    <td>{{res.reg_num}}</td>
-                    <td>{{res.mark}}</td>
-                    <td>{{res.model}}</td>
-                    <td>{{res.release_year}}</td>
-                    <td>{{res.owner_id}}</td>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.reg_num }}</td>
+                    <td>{{ car.mark_id }}</td>
+                    <td>{{ car.model_id}}</td>
+                    <td>{{ car.release_year}}</td>
+                    <td>{{ car.owner_id}}</td>
                 </tr>
-    {% endfor %}
-{% endif %}
+            {% endfor %}
+        </tbody>
+</table>
+        {% if result|length_is:0 %}
+        <p>Nothing...</p>
+        {% endif %}
 {% endblock %}

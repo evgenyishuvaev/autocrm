@@ -1,3 +1,4 @@
+import re
 from datetime import datetime
 
 from django import forms
@@ -11,9 +12,15 @@ class AddCar(forms.ModelForm):
     current_year = int(datetime.today().year)
 
     def clean_reg_num(self):
+        # АВЕКМНОРСТУХ - русские буквы
+        pattern = r"^[ABEKMHORCTYX]\d{3}(?<!000)[ABEKMHORCTYX]{2}\d{2,3}$"
+
         reg_num = self.cleaned_data['reg_num']
-        if len(reg_num) < 9:
-            raise ValidationError("Register number can't be smaller then 9 characters")
+        if not re.match(pattern, reg_num.upper()):
+            raise ValidationError("Invalid format for register number")
+        if len(reg_num) < 8:
+            raise ValidationError("Register number can't be smaller then 8 or 9 characters")
+
         return reg_num
 
     def clean_release_year(self):

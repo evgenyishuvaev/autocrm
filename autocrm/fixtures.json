@@ -96,10 +96,10 @@
   "model": "car_accounting.car",
   "pk": 1,
   "fields": {
-    "reg_num": "000000000",
-    "mark": "Audi",
-    "model": "TT",
-    "release_year": 2005,
+    "reg_num": "a123ey126",
+    "mark": "Ford",
+    "model": "Focus",
+    "release_year": 2000,
     "owner": "serv"
   }
 },
@@ -107,21 +107,21 @@
   "model": "car_accounting.car",
   "pk": 2,
   "fields": {
-    "reg_num": "123456654",
-    "mark": "Honda",
-    "model": "Integra",
-    "release_year": 1998,
+    "reg_num": "a999aa126",
+    "mark": "Audi",
+    "model": "TT",
+    "release_year": 2010,
     "owner": "serv"
   }
 },
 {
   "model": "car_accounting.car",
-  "pk": 3,
+  "pk": 4,
   "fields": {
-    "reg_num": "фывфывфыв",
-    "mark": "Audi",
-    "model": "TT",
-    "release_year": 2021,
+    "reg_num": "e123tt126",
+    "mark": "Honda",
+    "model": "Integra",
+    "release_year": 2019,
     "owner": "serv"
   }
 },

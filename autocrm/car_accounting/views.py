@@ -13,8 +13,8 @@ def add_car(request: HttpRequest):
         mark = Model.objects.all().filter(model=request.POST['model'])[0].mark_id
         form_fields = request.POST.copy()
         form_fields.setdefault('mark', mark)
+        form_fields.setdefault('owner', request.user.username)
         form = AddCar(form_fields)
-        print(form.fields)
         if form.is_valid():
             form.save()
             return redirect('list_of_cars')
@@ -23,7 +23,7 @@ def add_car(request: HttpRequest):
 
     return render(request,
                   template_name='car_accounting/add_car.html',
-                  context={'form': form, 'title': 'Add car', 'username': request.user.username}
+                  context={'form': form, 'title': 'Add car'}
                   )
 
 
@@ -47,7 +47,6 @@ def get_statistics(request: HttpRequest):
 
             result = Car.objects.all().filter(**fields_for_filter).values()
             count_row = len(result)
-            print(result)
             return render(request,
                           template_name='car_accounting/statistics.html',
                           context={'title': 'Statistics',

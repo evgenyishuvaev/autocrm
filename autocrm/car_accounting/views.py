@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 
+from rest_framework import viewsets
+
 from .services.accounting_car import validate_and_save_add_form, get_cars_from_db, get_filtered_rows_from_db
 from .forms import AddCar, StatisticsForm
+from .serializers import CarSerializer
 
 
 @login_required
@@ -46,3 +49,13 @@ def get_statistics(request: HttpRequest):
                       template_name='car_accounting/statistics.html',
                       context={'title': 'Statistics', 'form': form}
                       )
+
+
+# ----------------REST----------------
+
+class CarApiView(viewsets.ReadOnlyModelViewSet):
+    serializer_class = CarSerializer
+
+    def get_queryset(self):
+        fields_for_filter = self.request.data
+        print(fields_for_filter)

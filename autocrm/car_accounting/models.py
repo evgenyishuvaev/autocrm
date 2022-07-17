@@ -23,11 +23,14 @@ class Model(models.Model):
 
 
 class Car(models.Model):
-    reg_num = models.CharField(max_length=9, unique=True)
+    reg_num = models.CharField(max_length=9, db_index=True)
     mark = models.ForeignKey(Mark, to_field='mark', on_delete=models.PROTECT)
     model = models.ForeignKey(Model, to_field='model', on_delete=models.PROTECT)
     release_year = models.IntegerField()
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey('accounts.CRMUser', to_field='username', on_delete=models.PROTECT)
+    re_registration = models.BooleanField(null=False, blank=False)
 
     def __str__(self):
         return self.reg_num

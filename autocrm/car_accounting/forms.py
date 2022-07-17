@@ -51,5 +51,8 @@ class StatisticsForm(forms.Form):
                                    required=False
                                    )
     release_year = forms.IntegerField(required=False)
+    re_registration = forms.BooleanField(required=False)
+    create_at = forms.DateTimeField(required=False)
+    update_at = forms.DateTimeField(required=False)
     owner_id = forms.CharField(max_length=150, label='Manager', required=False)
 

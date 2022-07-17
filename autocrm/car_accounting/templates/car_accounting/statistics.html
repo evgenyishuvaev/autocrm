@@ -29,6 +29,9 @@
                 <th>Mark</th>
                 <th>Model</th>
                 <th>Release year</th>
+                <th>Re-registration</th>
+                <th>Create at</th>
+                <th>Update at</th>
                 <th>Employer</th>
             </tr>
         </thead>
@@ -40,6 +43,9 @@
                     <td>{{ car.mark_id }}</td>
                     <td>{{ car.model_id}}</td>
                     <td>{{ car.release_year}}</td>
+                    <td>{{ car.re_registration}}</td>
+                    <td>{{ car.create_at}}</td>
+                    <td>{{ car.update_at}}</td>
                     <td>{{ car.owner_id}}</td>
                 </tr>
             {% endfor %}

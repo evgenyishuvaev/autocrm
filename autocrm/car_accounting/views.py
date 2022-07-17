@@ -2,60 +2,46 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 
-from .models import Car, Model
+from .services.accounting_car import validate_and_save_add_form, get_cars_from_db, get_filtered_rows_from_db
 from .forms import AddCar, StatisticsForm
 
 
 @login_required
 def add_car(request: HttpRequest):
-
+    """
+    Представление url /add_car
+    """
     if request.method == "POST":
-        mark = Model.objects.all().filter(model=request.POST['model'])[0].mark_id
-        form_fields = request.POST.copy()
-        form_fields.setdefault('mark', mark)
-        form_fields.setdefault('owner', request.user.username)
-        form = AddCar(form_fields)
+        form = validate_and_save_add_form(request)
         if form.is_valid():
             form.save()
             return redirect('list_of_cars')
     else:
         form = AddCar()
 
-    return render(request,
-                  template_name='car_accounting/add_car.html',
-                  context={'form': form, 'title': 'Add car'}
-                  )
+    return render(request, template_name='car_accounting/add_car.html', context={'form': form, 'title': 'Add car'})
 
 
 @login_required
 def get_cars(request: HttpRequest):
-    cars = Car.objects.all()
-    return render(request,
-                  template_name='car_accounting/list_of_car.html',
-                  context={'cars': cars, 'title': 'List_of_cars'}
-                  )
+    """
+    Представление url '/'
+    """
+    context = get_cars_from_db()
+    return render(request, template_name='car_accounting/list_of_car.html', context=context)
 
 
 @login_required
 def get_statistics(request: HttpRequest):
-    form = StatisticsForm()
+    """
+    Представление url '/statistics'
+    """
 
     if request.method == 'POST':
-        form = StatisticsForm(request.POST)
-        if form.is_valid():
-            fields_for_filter = {key: value for key, value in form.cleaned_data.items() if value}
-
-            result = Car.objects.all().filter(**fields_for_filter).values()
-            count_row = len(result)
-            return render(request,
-                          template_name='car_accounting/statistics.html',
-                          context={'title': 'Statistics',
-                                   'result': result,
-                                   'count': count_row,
-                                   'form': form}
-                          )
-
+        context = get_filtered_rows_from_db(request)
+        return render(request, template_name='car_accounting/statistics.html', context=context)
     else:
+        form = StatisticsForm()
         return render(request,
                       template_name='car_accounting/statistics.html',
                       context={'title': 'Statistics', 'form': form}

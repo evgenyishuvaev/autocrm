@@ -1,5 +1,43 @@
 [
 {
+  "model": "accounts.crmuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$R4HYY1zOikxWpFRoGdND14$tOGMG3OKWwvo9Mt3jBbA2Sx1NHJ2h2rY/esuE+BNYDU=",
+    "last_login": "2022-07-17T10:50:37.739Z",
+    "is_superuser": true,
+    "username": "serv",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-07-02T20:32:53.070Z",
+    "is_manager": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.crmuser",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$RIxg819toImnAOJwijUXkQ$PUzRI97imxfZi1YIjbnLtp3mcb6CJZODBhszM9iIUwg=",
+    "last_login": "2022-07-05T20:12:48.801Z",
+    "is_superuser": false,
+    "username": "john",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-07-05T20:12:28Z",
+    "is_manager": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "car_accounting.mark",
   "pk": 1,
   "fields": {
@@ -96,71 +134,70 @@
   "model": "car_accounting.car",
   "pk": 1,
   "fields": {
-    "reg_num": "a123ey126",
-    "mark": "Ford",
-    "model": "Focus",
-    "release_year": 2000,
-    "owner": "serv"
+    "reg_num": "a777aa126",
+    "mark": "Audi",
+    "model": "TT",
+    "release_year": 2010,
+    "create_at": "2022-07-17T11:55:48.593Z",
+    "update_at": "2022-07-17T11:55:48.593Z",
+    "owner": "serv",
+    "re_registration": false
   }
 },
 {
   "model": "car_accounting.car",
   "pk": 2,
   "fields": {
-    "reg_num": "a999aa126",
+    "reg_num": "a777aa126",
     "mark": "Audi",
     "model": "TT",
     "release_year": 2010,
-    "owner": "serv"
+    "create_at": "2022-07-17T12:12:35.054Z",
+    "update_at": "2022-07-17T12:12:35.054Z",
+    "owner": "serv",
+    "re_registration": true
+  }
+},
+{
+  "model": "car_accounting.car",
+  "pk": 3,
+  "fields": {
+    "reg_num": "c777cc777",
+    "mark": "Ford",
+    "model": "Focus",
+    "release_year": 2006,
+    "create_at": "2022-07-17T14:00:59.882Z",
+    "update_at": "2022-07-17T14:00:59.883Z",
+    "owner": "serv",
+    "re_registration": false
   }
 },
 {
   "model": "car_accounting.car",
   "pk": 4,
   "fields": {
-    "reg_num": "e123tt126",
-    "mark": "Honda",
-    "model": "Integra",
-    "release_year": 2019,
-    "owner": "serv"
+    "reg_num": "y888yy888",
+    "mark": "Ford",
+    "model": "Fiesta",
+    "release_year": 2000,
+    "create_at": "2022-07-17T14:13:06.296Z",
+    "update_at": "2022-07-17T14:13:06.296Z",
+    "owner": "serv",
+    "re_registration": false
   }
 },
 {
-  "model": "accounts.crmuser",
-  "pk": 1,
+  "model": "car_accounting.car",
+  "pk": 5,
   "fields": {
-    "password": "pbkdf2_sha256$320000$R4HYY1zOikxWpFRoGdND14$tOGMG3OKWwvo9Mt3jBbA2Sx1NHJ2h2rY/esuE+BNYDU=",
-    "last_login": "2022-07-08T19:28:46.620Z",
-    "is_superuser": true,
-    "username": "serv",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2022-07-02T20:32:53.070Z",
-    "is_manager": false,
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "accounts.crmuser",
-  "pk": 2,
-  "fields": {
-    "password": "pbkdf2_sha256$320000$RIxg819toImnAOJwijUXkQ$PUzRI97imxfZi1YIjbnLtp3mcb6CJZODBhszM9iIUwg=",
-    "last_login": "2022-07-05T20:12:48.801Z",
-    "is_superuser": false,
-    "username": "john",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2022-07-05T20:12:28Z",
-    "is_manager": true,
-    "groups": [],
-    "user_permissions": []
+    "reg_num": "c777cc777",
+    "mark": "Ford",
+    "model": "Focus",
+    "release_year": 2006,
+    "create_at": "2022-07-17T14:32:15.326Z",
+    "update_at": "2022-07-17T14:32:15.326Z",
+    "owner": "serv",
+    "re_registration": true
   }
 }
 ]

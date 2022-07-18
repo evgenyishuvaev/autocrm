@@ -3,6 +3,8 @@ from django.urls import path, include
 from rest_framework import routers
 
 from .views import add_car, get_cars, get_statistics, CarApiView
+from .api_schemas import urlpatterns as doc_url
+
 
 router = routers.DefaultRouter()
 router.register(r'cars', CarApiView, basename='cars')
@@ -16,3 +18,5 @@ urlpatterns = [
     # --------------REST-------------------
     path('api/v1/', include(router.urls))
 ]
+
+urlpatterns += doc_url

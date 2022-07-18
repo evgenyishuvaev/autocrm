@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  title: 'AutoCRM'
+  version: 'v1'
+paths:
+  /api/v1/cars/:
+    get:
+      operationId: listCars
+      description: 'This API provide statistics of uploaded cars'
+      parameters:
+        - name: id
+          in: query
+          required: false
+          description: 'This is pk in DB'
+          schema:
+            type: integer
+        - name: reg_num
+          in: query
+          required: false
+          description: 'This is registration number'
+          schema:
+            type: string
+        - name: mark
+          in: query
+          required: false
+          description: 'This is mark auto'
+          schema:
+            type: string
+        - name: model
+          in: query
+          required: false
+          description: 'This is model of mark'
+          schema:
+            type: string
+        - name: release_year
+          in: query
+          required: false
+          description: 'This is release year'
+          schema:
+            type: integer
+        - name: re_registration
+          in: query
+          required: false
+          description: 'This is re-registration status'
+          schema:
+            type: boolean
+        - name: owner
+          in: query
+          required: false
+          description: 'This is owner manager, who add this auto'
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+          description: ''
+      tags:
+      - api
+  /api/v1/cars/{id}/:
+    get:
+      operationId: retrieveCar
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+          description: ''
+      tags:
+      - api
+components:
+  schemas:
+    Car:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        reg_num:
+          type: string
+          maxLength: 9
+        release_year:
+          type: integer
+        create_at:
+          type: string
+          format: date-time
+          readOnly: true
+        update_at:
+          type: string
+          format: date-time
+          readOnly: true
+        re_registration:
+          type: boolean
+        mark:
+          type: string
+        model:
+          type: string
+        owner:
+          type: string
+      required:
+      - reg_num
+      - release_year
+      - re_registration
+      - mark
+      - model
+      - owner

@@ -2,8 +2,7 @@ from django.urls import path, include
 
 from rest_framework import routers
 
-from .views import add_car, get_cars, get_statistics, CarApiView
-from .api_schemas import urlpatterns as doc_url
+from .views import add_car, get_cars, get_statistics, CarApiView, get_swagger
 
 
 router = routers.DefaultRouter()
@@ -16,7 +15,6 @@ urlpatterns = [
     path('statistics', get_statistics, name='statistics'),
 
     # --------------REST-------------------
-    path('api/v1/', include(router.urls))
+    path('api/v1/', include(router.urls)),
+    path('swagger/', get_swagger, name='swagger_ui')
 ]
-
-urlpatterns += doc_url

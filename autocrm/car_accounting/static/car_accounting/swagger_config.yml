@@ -117,3 +117,7 @@ components:
       - mark
       - model
       - owner
+  securitySchemes:
+    django:
+      type: http
+      scheme: basic

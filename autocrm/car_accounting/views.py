@@ -72,5 +72,6 @@ class CarApiView(ReadOnlyModelViewSet):
             return Car.objects.filter(**fields_for_filter).exclude(re_registration=True)
 
 
+
 def get_swagger(request):
     return render(request, template_name='car_accounting/swagger_ui.html')

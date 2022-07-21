@@ -1,6 +1,6 @@
 from django.http import HttpRequest
 
-from ..models import Car, Model, Mark
+from ..models import Car, Model
 from ..forms import AddCar, StatisticsForm
 
 

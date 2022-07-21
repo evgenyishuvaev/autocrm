@@ -2,7 +2,8 @@ from django.urls import path, include
 
 from rest_framework import routers
 
-from .views import add_car, get_cars, get_statistics, CarApiView, get_swagger
+from .views import add_car, get_cars, get_statistics
+from .api_views import  CarApiView, get_swagger
 
 
 router = routers.DefaultRouter()

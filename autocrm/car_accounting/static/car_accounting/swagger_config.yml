@@ -5,6 +5,7 @@ info:
 paths:
   /api/v1/cars/:
     get:
+      summary: Returns a list of cars
       operationId: listCars
       description: 'This API provide statistics of uploaded cars'
       parameters:
@@ -63,8 +64,9 @@ paths:
       - api
   /api/v1/cars/{id}/:
     get:
+      summary: Returns a car
       operationId: retrieveCar
-      description: ''
+      description: 'Return car by pk in DB'
       parameters:
       - name: id
         in: path
@@ -118,6 +120,8 @@ components:
       - model
       - owner
   securitySchemes:
-    django:
+    basicAuth:
       type: http
       scheme: basic
+security:
+  - basicAuth: []

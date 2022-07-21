@@ -2,13 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 
-from rest_framework.viewsets import ReadOnlyModelViewSet
-from rest_framework.permissions import IsAdminUser
+
 
 from .services.accounting_car import validate_and_save_add_form, get_cars_from_db, get_filtered_rows_from_db
-from .models import Car
 from .forms import AddCar, StatisticsForm
-from .serializers import CarSerializer
+
 
 
 @login_required
@@ -53,25 +51,3 @@ def get_statistics(request: HttpRequest):
                       context={'title': 'Statistics', 'form': form}
                       )
 
-
-# ----------------REST----------------
-
-class CarApiView(ReadOnlyModelViewSet):
-
-    serializer_class = CarSerializer
-    permission_classes = [IsAdminUser, ]
-
-    def get_queryset(self):
-        fields_for_filter = self.request.query_params.dict()
-        re_registration = fields_for_filter.get("re_registration")
-        print(fields_for_filter)
-        if re_registration:
-            fields_for_filter.pop("re_registration")
-            return Car.objects.filter(**fields_for_filter)
-        else:
-            return Car.objects.filter(**fields_for_filter).exclude(re_registration=True)
-
-
-
-def get_swagger(request):
-    return render(request, template_name='car_accounting/swagger_ui.html')

@@ -1,7 +1,9 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 
-from .settings import DEBUG
+from django.views.static import serve
+
+from .settings import DEBUG, STATIC_ROOT
 
 
 
@@ -26,3 +28,9 @@ if DEBUG:
     urlpatterns = [
         path('__debug__/', include('debug_toolbar.urls')),
     ] + urlpatterns
+else:
+    urlpatterns += [
+        re_path(r'^static/(?P<path>.*)$', serve, {
+            'document_root': STATIC_ROOT,
+        }),
+    ]

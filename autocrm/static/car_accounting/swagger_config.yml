@@ -1,0 +1,205 @@
+openapi: 3.0.2
+info:
+  title: AutoCRM
+  version: v1
+paths:
+  /api/v1/car_accounting/cars/:
+    get:
+      operationId: listCars
+      description: "\u041F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\
+        \u0438\u044F REST API  - '/cars' \u0438 '/cars/<int:pk>'"
+      parameters:
+        - name: id
+          in: query
+          required: false
+          description: 'This is pk in DB'
+          schema:
+            type: integer
+        - name: reg_num
+          in: query
+          required: false
+          description: 'This is registration number'
+          schema:
+            type: string
+        - name: mark
+          in: query
+          required: false
+          description: 'This is mark auto'
+          schema:
+            type: string
+        - name: model
+          in: query
+          required: false
+          description: 'This is model of mark'
+          schema:
+            type: string
+        - name: release_year
+          in: query
+          required: false
+          description: 'This is release year'
+          schema:
+            type: integer
+        - name: re_registration
+          in: query
+          required: false
+          description: 'This is re-registration status'
+          schema:
+            type: boolean
+        - name: owner
+          in: query
+          required: false
+          description: 'This is owner manager, who add this auto'
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+          description: ''
+      tags:
+      - Car accounting API
+      security:
+        - bearerAuth: []
+  /api/v1/car_accounting/cars/{id}/:
+    get:
+      operationId: retrieveCar
+      description: "\u041F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\
+        \u0438\u044F REST API  - '/cars' \u0438 '/cars/<int:pk>'"
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+          description: ''
+      tags:
+      - Car accounting API
+      security:
+        - bearerAuth: []
+  /api/token/:
+    post:
+      operationId: createTokenObtainPair
+      description: 'Takes a set of user credentials and returns an access and refresh
+        JSON web token pair to prove the authentication of those credentials.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+      tags:
+      - JWT Auth
+  /api/token/refresh/:
+    post:
+      operationId: createTokenRefresh
+      description: 'Takes a refresh type JSON web token and returns an access type
+        JSON web
+
+        token if the refresh token is valid.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+      tags:
+      - JWT Auth
+components:
+  schemas:
+    Car:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        reg_num:
+          type: string
+          maxLength: 9
+        release_year:
+          type: integer
+        create_at:
+          type: string
+          format: date-time
+          readOnly: true
+        update_at:
+          type: string
+          format: date-time
+          readOnly: true
+        re_registration:
+          type: boolean
+        mark:
+          type: string
+        model:
+          type: string
+        owner:
+          type: string
+      required:
+      - reg_num
+      - release_year
+      - re_registration
+      - mark
+      - model
+      - owner
+    TokenObtainPair:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - username
+      - password
+    TokenRefresh:
+      type: object
+      properties:
+        refresh:
+          type: string
+        access:
+          type: string
+          readOnly: true
+      required:
+      - refresh
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
